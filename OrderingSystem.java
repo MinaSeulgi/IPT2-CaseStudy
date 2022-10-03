@@ -21,5 +21,21 @@ public class OrderingSystem {
         sizes.put(4, "Large");
         sizes.put(5, "Jumbo");
     }
+
+	 private static String askForSize() {
+        String selectedSize = "";
+        boolean isValidSize = false;
+        while (!isValidSize) {
+            System.out.println("\nTo start, choose your desired size:");
+            for(Map.Entry<Object, String> entry : sizes.entrySet()) {
+                System.out.printf("\t%s. %s\n", entry.getKey(), entry.getValue());
+            }
+            System.out.print("Enter number => ");
+            selectedSize = sc.nextLine();
+            isValidSize = validate(selectedSize, "size");
+            System.out.println((!isValidSize ? "INVALID INPUT" : getResponse()));
+        }
+        return sizes.get(Integer.parseInt(selectedSize));
+    }
     
 }
