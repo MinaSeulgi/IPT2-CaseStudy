@@ -6,12 +6,13 @@ public class OrderingSystem {
 	greet();
 
     populateSizes();
+    String userSize = askForSize();
     }
 
     private static void greet() {
         System.out.println("""
                            WELCOME TO LA LUNA PIZZA STORE!
-                           You can buy assured that we provide quality pizzas!""");
+                           You can buy assured that we provide quality pizzas!"");
     }
 
     private static void populateSizes() {
