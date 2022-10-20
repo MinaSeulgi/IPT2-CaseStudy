@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class OrderingSystem {
-
+    
+    static Map<Object,String> toppings = new HashMap<>();
     static Map<Object, String> sizes = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -62,7 +65,7 @@ public class OrderingSystem {
         return sizes.containsKey(key);
     }
 
-	 private static boolean validate(String num, String type) {
+    private static boolean validate(String num, String type) {
         try {
             boolean isPresent;
             switch(type) {
@@ -79,6 +82,43 @@ public class OrderingSystem {
             return false;
         }
         return true;
+    }
+    
+    private static String[] askForToppings(int quantity) {
+        List<String> selectedToppings = new ArrayList<>();
+        String topping;
+        boolean isDoneSelecting = false;
+        while (!isDoneSelecting) {
+            System.out.println("\nNow, choose your desired toppings one at a time:");
+            for(Map.Entry<Object, String> entry : toppings.entrySet()) {
+                System.out.printf("\t%s. %s\n", entry.getKey(), entry.getValue());
+            }
+            
+            boolean isDone = false;
+            boolean isValid;
+            while (!isDone) {
+                System.out.print("Enter number => ");
+                topping = sc.nextLine();
+                isValid = validate(topping, "topping");
+                if(isValid) {
+                    if(selectedToppings.contains(toppings.get(Integer.parseInt(topping)))) {
+                        System.out.println("THAT TOPPING IS ALREADY SELECTED!");
+                        continue;
+                    } else {
+                        selectedToppings.add(toppings.get(Integer.parseInt(topping)));
+                    }
+                }
+                System.out.println((!isValid ? "INVALID INPUT" : getResponse()));
+                if (selectedToppings.size() < quantity) { System.out.println("YOUR SELECTION SO FAR: " + selectedToppings); }
+                isDone = selectedToppings.size() == quantity;
+            }
+            break;
+        }
+        return selectedToppings.toArray(new String[quantity]);
+    }
+    
+    private static boolean isToppingPresent(int key) {
+        return toppings.containsKey(key);
     }
     
 
