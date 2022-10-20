@@ -39,4 +39,8 @@ public class OrderingSystem {
         return sizes.get(Integer.parseInt(selectedSize));
     }
     
+       private static boolean isSizePresent(int key) {
+        return sizes.containsKey();
+    }
+
 }
