@@ -7,6 +7,19 @@ public class OrderingSystem {
 
     populateSizes();
     String userSize = askForSize();
+
+    String userToppingQuantity = askForToppingQuantity();
+
+private static String askForToppingQuantity() {
+        String quantity = "";
+        boolean isValidQuantity = false;
+        while (!isValidQuantity) {
+            System.out.print("\nHow many toppings do you want?\nThere are only " + toppings.size() + " number toppings to choose from => ");
+            quantity = sc.nextLine();
+            isValidQuantity = validate(quantity, "quantity");
+            System.out.println((!isValidQuantity ? "INVALID INPUT" : getResponse()));
+        }
+        return quantity;
     }
 
     private static void greet() {
