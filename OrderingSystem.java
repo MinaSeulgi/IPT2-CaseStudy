@@ -5,16 +5,18 @@ import java.util.Scanner;
 public class OrderingSystem {
 
     static Map<Object, String> sizes = new HashMap<>();
+    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-	greet();
+        greet();
 
-    populateSizes();
-    String userSize = askForSize();
+        populateSizes();
+        String userSize = askForSize();
 
-    String userToppingQuantity = askForToppingQuantity();
-
-private static String askForToppingQuantity() {
+        String userToppingQuantity = askForToppingQuantity();
+    }
+        
+    private static String askForToppingQuantity() {
         String quantity = "";
         boolean isValidQuantity = false;
         while (!isValidQuantity) {
@@ -29,7 +31,7 @@ private static String askForToppingQuantity() {
     private static void greet() {
         System.out.println("""
                            WELCOME TO LA LUNA PIZZA STORE!
-                           You can buy assured that we provide quality pizzas!"");
+                           You can buy assured that we provide quality pizzas!""");
     }
 
     private static void populateSizes() {
@@ -56,7 +58,7 @@ private static String askForToppingQuantity() {
         return sizes.get(Integer.parseInt(selectedSize));
     }
     
-       private static boolean isSizePresent(int key) {
+    private static boolean isSizePresent(int key) {
         return sizes.containsKey(key);
     }
 
