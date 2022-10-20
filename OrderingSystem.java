@@ -8,12 +8,15 @@ public class OrderingSystem {
     
     static Map<Object,String> toppings = new HashMap<>();
     static Map<Object, String> sizes = new HashMap<>();
+    static Map<Object, String> responses = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         greet();
 
         populateSizes();
+        populateResponses();
+
         String userSize = askForSize();
 
         String userToppingQuantity = askForToppingQuantity();
@@ -82,6 +85,26 @@ public class OrderingSystem {
             return false;
         }
         return true;
+    }
+
+    private static String getResponse() {
+        int max = 10;
+        int min = 1;
+        int range = max - min + 1;
+        return responses.get((int)(Math.random() * range) + min);
+    }
+
+    private static void populateResponses() {
+        responses.put(1, ":::::::::: Awesome!");
+        responses.put(2, ":::::::::: Great choice!");
+        responses.put(3, ":::::::::: Nice one!");
+        responses.put(4, ":::::::::: Yeeeesss!");
+        responses.put(5, ":::::::::: That's what I'm talking about!");
+        responses.put(6, ":::::::::: Woah! Niiiiice!");
+        responses.put(7, ":::::::::: Noice!");
+        responses.put(8, ":::::::::: Superb!");
+        responses.put(9, ":::::::::: You got it!");
+        responses.put(10, ":::::::::: Gotcha!");
     }
     
     private static String[] askForToppings(int quantity) {
