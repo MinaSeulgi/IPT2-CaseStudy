@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.HashMap;
+
 public class OrderingSystem {
 
     static Map<Object, String> sizes = new HashMap<>();
@@ -40,7 +43,27 @@ public class OrderingSystem {
     }
     
        private static boolean isSizePresent(int key) {
-        return sizes.containsKey();
+        return sizes.containsKey(key);
     }
+
+	 private static boolean validate(String num, String type) {
+        try {
+            boolean isPresent;
+            switch(type) {
+                case "size":
+                    isPresent = isSizePresent(Integer.parseInt(num));
+                    if (!isPresent) { return false; }
+                case "topping":
+                    isPresent = isToppingPresent(Integer.parseInt(num));
+                    if (!isPresent) { return false; }
+                case "quantity":
+                    if (Integer.parseInt(num) > toppings.size()) { return false; }
+            }
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }
