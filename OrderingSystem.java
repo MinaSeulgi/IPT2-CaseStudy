@@ -1,3 +1,7 @@
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class OrderingSystem {
 
     static Map<Object, String> sizes = new HashMap<>();
