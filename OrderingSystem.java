@@ -13,7 +13,7 @@ public class OrderingSystem {
     String userSize = askForSize();
 
     String userToppingQuantity = askForToppingQuantity();
-
+        
 private static String askForToppingQuantity() {
         String quantity = "";
         boolean isValidQuantity = false;
